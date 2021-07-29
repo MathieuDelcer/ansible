@@ -1,0 +1,39 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    #docker install
+    - name: install docker
+      apt:
+        name:
+          - docker
+   
+    #copy files
+    - name: copy file
+      copy:
+        src: voteApp/
+        dest: /home/test/voteApp/
+
+    #create imgs
+    - name: build container image
+      docker_image:
+        name: result:v1.0
+        build:
+          path: /home/test/voteApp/result/Dockerfile
+          source: build
+        state: present
+    - name: build container image
+      docker_image:
+        name: vote:v1.0
+        build:
+          path: /home/test/voteApp/vote/Dockerfile
+          source: build
+        state: present
+    - name: build container image
+      docker_image:
+        name: worker:v1.0
+        build:
+          path: /home/test/voteApp/worker/Dockerfile
+          source: build
+        state: present
+    
