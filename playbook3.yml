@@ -36,4 +36,3 @@
           path: /home/test/voteApp/worker/Dockerfile
           source: build
         state: present
-    
