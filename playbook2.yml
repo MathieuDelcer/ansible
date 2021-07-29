@@ -4,13 +4,13 @@
   tasks:
 
   - name: update distibution
-     apt:
-       update_cache: yes
-   - name: install apache
-     apt:
-       name:
-         - apache2
-       update_cache: yes
+    apt:
+      update_cache: yes
+  - name: install apache
+    apt:
+      name:
+        - apache2
+      update_cache: yes
 
   - name: copy index html
     copy: 
